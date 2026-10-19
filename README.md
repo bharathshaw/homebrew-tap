@@ -1,18 +1,18 @@
-# Caliper
+# Spent
 
 A menu bar app that shows, for each of your Claude Code (and Codex) accounts, how much of the 5-hour plan
 limit is used, when it renews, and what your usage is worth at API prices. macOS 14 or later.
 
 ```
-brew install bharathshaw/tap/caliper
+brew install bharathshaw/tap/spent
 ```
 
-Then open **Caliper** from Applications. The first time, macOS stops it because it isn't signed by Apple:
+Then open **Spent** from Applications. The first time, macOS stops it because it isn't signed by Apple:
 open **System Settings > Privacy & Security**, scroll down and click **Open Anyway** (once). Then macOS asks to
-let **security** (its own keychain tool, which Caliper uses) read your Claude Code login, once per account:
+let **security** (its own keychain tool, which Spent uses) read your Claude Code login, once per account:
 choose **Always Allow**. It starts at login from then on (turn that off in System Settings > General > Login Items).
 
-Update with `brew upgrade caliper` (macOS may ask for Open Anyway once more). Remove with `brew uninstall caliper` (add `--zap` to also delete
+Update with `brew upgrade spent` (macOS may ask for Open Anyway once more). Remove with `brew uninstall spent` (add `--zap` to also delete
 its cache of usage numbers).
 
 ## Privacy and security
@@ -25,7 +25,7 @@ its cache of usage numbers).
   account name and whether it's an API key are taken: when the account is first seen, and again only if that
   login changes.
 - **What's kept:** your plan usage (as Anthropic returns it), spend totals and how far each log has been read, in
-  `~/.cache/caliper`, which only you can open. Never a login, never a message.
+  `~/.cache/spent`, which only you can open. Never a login, never a message.
 - No analytics, no tracking, no other internet use.
 - Homebrew checks the app's SHA-256 fingerprint before installing, and macOS checks the app the first time it
   opens. The app isn't signed by Apple: it's a personal tool shared with friends.
