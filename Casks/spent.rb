@@ -2,10 +2,10 @@
 # Homebrew downloads the zip below, checks it against this SHA-256 fingerprint, and refuses it if it doesn't
 # match. The app goes in Applications and adds itself to Login Items the first time it opens.
 cask "spent" do
-  version "2026.10.20.69"
-  sha256 "d903e4ccf2156e7d920fb1fc2e6da56adb1615f552e8297e63f82cddad8d0c94"
+  version "2026.10.20.74"
+  sha256 "9c21772b72de0075f3e9e87f8b0bc16c806e394cd191767b6eede1c2511e1a3f"
 
-  url "file:///private/tmp/claude-501/-Users-bharathlayerpath/c75dc966-020b-425e-9d70-a5c6e7445bc2/scratchpad/Spent.zip"
+  url "https://github.com/bharathshaw/homebrew-tap/releases/download/spent-#{version}/Spent.zip"
   name "Spent"
   desc "Menu bar app for Claude Code and Codex plan usage, renew times and spend"
   homepage "https://github.com/bharathshaw/homebrew-tap"
