@@ -3,7 +3,7 @@
 # match. The app goes in Applications and adds itself to Login Items the first time it opens.
 cask "spent" do
   version "2026.10.20.74"
-  sha256 "9c21772b72de0075f3e9e87f8b0bc16c806e394cd191767b6eede1c2511e1a3f"
+  sha256 "3de36144307f757e6b14092f9152388a989a0bc1f2715ae09d8638f1df7e1e3e"
 
   url "https://github.com/bharathshaw/homebrew-tap/releases/download/spent-#{version}/Spent.zip"
   name "Spent"
@@ -13,6 +13,18 @@ cask "spent" do
   depends_on macos: :sonoma
 
   app "Spent.app"
+
+  # Homebrew has checked the download's fingerprint, so the app opens straight away: macOS's "can't check this
+  # app" stop is cleared, and the app is opened, so the first-run panel appears right after the install line.
+  # (Opening has to use the older hook: the newer sandboxed steps can't launch an app. Homebrew prints a
+  # deprecation warning for it.)
+  postflight_steps do
+    run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "{{appdir}}/Spent.app"]
+  end
+
+  postflight do
+    system_command "/usr/bin/open", args: ["#{appdir}/Spent.app"]
+  end
 
   uninstall quit: "com.bharath.spent"
 
@@ -24,11 +36,8 @@ cask "spent" do
   ]
 
   caveats <<~TEXT
-    Open Spent from Applications. The first time, macOS stops it because it isn't signed by Apple:
-    open System Settings > Privacy & Security, scroll down and click Open Anyway (once).
-    Then macOS asks to let "security" (its own keychain tool, which Spent uses) read your Claude Code
-    login, once per account: choose Always Allow.
+    Spent is open: look up at your menu bar. macOS will ask to let "security" (its own keychain tool,
+    which Spent uses) read your Claude Code login, once per account: choose Always Allow.
     It starts at login from then on (turn that off in System Settings > General > Login Items).
-    After brew upgrade, macOS may ask for Open Anyway once more.
   TEXT
 end

@@ -7,12 +7,11 @@ limit is used, when it renews, and what your usage is worth at API prices. macOS
 brew install bharathshaw/tap/spent
 ```
 
-Then open **Spent** from Applications. The first time, macOS stops it because it isn't signed by Apple:
-open **System Settings > Privacy & Security**, scroll down and click **Open Anyway** (once). Then macOS asks to
-let **security** (its own keychain tool, which Spent uses) read your Claude Code login, once per account:
-choose **Always Allow**. It starts at login from then on (turn that off in System Settings > General > Login Items).
+Spent opens by itself: look up at your menu bar. macOS asks to let **security** (its own keychain tool, which
+Spent uses) read your Claude Code login, once per account: choose **Always Allow**. It starts at login from then
+on (turn that off in System Settings > General > Login Items).
 
-Update with `brew upgrade spent` (macOS may ask for Open Anyway once more). Remove with `brew uninstall spent` (add `--zap` to also delete
+Update with `brew upgrade spent`. Remove with `brew uninstall spent` (add `--zap` to also delete
 its cache of usage numbers).
 
 ## Privacy and security
@@ -27,8 +26,8 @@ its cache of usage numbers).
 - **What's kept:** your plan usage (as Anthropic returns it), spend totals and how far each log has been read, in
   `~/.cache/spent`, which only you can open. Never a login, never a message.
 - No analytics, no tracking, no other internet use.
-- Homebrew checks the app's SHA-256 fingerprint before installing, and macOS checks the app the first time it
-  opens. The app isn't signed by Apple: it's a personal tool shared with friends.
+- Homebrew checks the app's SHA-256 fingerprint before installing. The app isn't signed by Apple (it's a personal
+  tool shared with friends), so the install clears macOS's "can't check this app" stop and opens it for you.
 
 This repo holds only the install recipe and the app; the source code is private.
 Spend is the API-price value of your usage, not a bill. Not affiliated with Anthropic or OpenAI.
