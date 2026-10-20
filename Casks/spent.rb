@@ -2,8 +2,8 @@
 # Homebrew downloads the zip below, checks it against this SHA-256 fingerprint, and refuses it if it doesn't
 # match. The app goes in Applications and adds itself to Login Items the first time it opens.
 cask "spent" do
-  version "2026.10.20.74"
-  sha256 "3de36144307f757e6b14092f9152388a989a0bc1f2715ae09d8638f1df7e1e3e"
+  version "2026.10.20.75"
+  sha256 "0561f24f2d2af0b2fd5d79a619f2e603e4e0a42604fa6f580f801b12688d5022"
 
   url "https://github.com/bharathshaw/homebrew-tap/releases/download/spent-#{version}/Spent.zip"
   name "Spent"
